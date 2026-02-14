@@ -1,0 +1,312 @@
+/* ---- Gift Box Surprise ---- */
+.gift-box.surprise {
+  width: 120px;
+  height: 120px;
+  margin: 32px auto 0 auto;
+  position: relative;
+  cursor: pointer;
+  animation: jump 1.2s infinite cubic-bezier(.5,0,1,1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 2;
+}
+.gift-box.surprise.opened {
+  animation: none;
+  opacity: 0.7;
+}
+.gift-lid {
+  width: 100px;
+  height: 30px;
+  background: #ffb6c8;
+  border-radius: 8px 8px 18px 18px;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  z-index: 2;
+  transition: transform 0.5s cubic-bezier(.5,0,1,1);
+}
+.gift-box.surprise.opened .gift-lid {
+  transform: translateY(-40px) rotate(-18deg) scaleX(1.1);
+}
+.gift-base {
+  width: 100px;
+  height: 60px;
+  background: #ff3b7a;
+  border-radius: 0 0 18px 18px;
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  z-index: 1;
+}
+.gift-ribbon {
+  width: 18px;
+  height: 60px;
+  background: #fff;
+  position: absolute;
+  left: 51px;
+  bottom: 0;
+  z-index: 2;
+  border-radius: 8px;
+}
+.gift-bow {
+  width: 38px;
+  height: 18px;
+  background: #fff;
+  border-radius: 50% 50% 0 0;
+  position: absolute;
+  top: 12px;
+  left: 41px;
+  z-index: 3;
+  box-shadow: 0 0 0 2px #ff3b7a;
+}
+.gift-text {
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #b0124b;
+  font-weight: bold;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px #fff8;
+}
+@keyframes jump {
+  0%, 100% { transform: translateY(0); }
+  20% { transform: translateY(-18px); }
+  40% { transform: translateY(-8px); }
+  60% { transform: translateY(-22px); }
+  80% { transform: translateY(-6px); }
+}
+
+.valentine-surprise {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 32px auto 0 auto;
+  padding: 24px 12px 18px 12px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(255,59,122,0.18);
+  max-width: 340px;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+.valentine-surprise.hidden {
+  opacity: 0;
+  pointer-events: none;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.valentine-img {
+  width: 180px;
+  max-width: 90vw;
+  border-radius: 16px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 18px #ffb6c8aa;
+}
+.valentine-surprise h2 {
+  color: #b0124b;
+  text-align: center;
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+/* ---- basic reset ---- */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, Arial, sans-serif; }
+
+/* ---- background ---- */
+.hearts-bg{
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at top, #ffe3ef, #ffd1e3 40%, #ffb6c8);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Floating hearts using CSS only */
+.hearts-bg::before, .hearts-bg::after{
+  content:"";
+  position:absolute;
+  inset:-200px;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,.8) 2px, transparent 3px),
+    radial-gradient(circle, rgba(255,255,255,.6) 1px, transparent 3px);
+  background-size: 60px 60px, 90px 90px;
+  animation: float 10s linear infinite;
+  opacity:.6;
+  pointer-events:none;
+}
+.hearts-bg::after{
+  animation-duration: 16s;
+  opacity:.4;
+}
+
+@keyframes float{
+  from { transform: translateY(0); }
+  to   { transform: translateY(120px); }
+}
+
+/* ---- main card ---- */
+.card{
+  width: min(520px, 92vw);
+  background: rgba(255,255,255,.88);
+  border: 2px solid rgba(255,105,180,.35);
+  border-radius: 18px;
+  padding: 22px 22px 18px;
+  box-shadow: 0 18px 60px rgba(0,0,0,.12);
+  position: relative;
+}
+
+.mail-top{
+  font-size: 0.9rem;
+  color: #6b2b42;
+  background: rgba(255,182,193,.35);
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+}
+
+h1{
+  margin: 10px 0 8px;
+  color: #b0124b;
+  letter-spacing: .2px;
+}
+
+.subtitle{
+  margin: 0 0 18px;
+  color: #6b2b42;
+  line-height: 1.35;
+}
+
+/* ---- buttons ---- */
+.buttons{
+  display:flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 12px 0 6px;
+}
+
+.btn{
+  border: none;
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease;
+  user-select:none;
+}
+
+.btn:active{ transform: scale(.98); }
+
+.btn-yes{
+  background: linear-gradient(135deg, #ff3b7a, #ff7aa9);
+  color: white;
+  box-shadow: 0 10px 22px rgba(255,59,122,.35);
+}
+.btn-yes:hover{ transform: translateY(-2px); }
+
+.btn-no{
+  background: white;
+  color: #b0124b;
+  border: 2px solid rgba(176,18,75,.35);
+  box-shadow: 0 10px 22px rgba(176,18,75,.12);
+  position: relative; /* allows us to move it later */
+}
+
+.hint{
+  text-align:center;
+  margin: 10px 0 0;
+  color:#7b3a52;
+  font-size:.9rem;
+}
+
+/* ---- Memories page ---- */
+.memories-wrap{
+  width: min(920px, 94vw);
+  margin: 40px auto;
+  padding: 10px;
+}
+
+.mem-title{
+  text-align:center;
+  color:#b0124b;
+  margin: 0 0 18px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+}
+
+/* Flip card */
+.flip{
+  perspective: 1000px;
+}
+.flip-inner{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 18px;
+  transform-style: preserve-3d;
+  transition: transform .7s ease;
+  box-shadow: 0 16px 40px rgba(0,0,0,.12);
+}
+.flip.flipped .flip-inner{
+  transform: rotateY(180deg);
+}
+.face{
+  position:absolute;
+  inset:0;
+  border-radius: 18px;
+  overflow:hidden;
+  backface-visibility: hidden;
+  background:white;
+  border: 2px solid rgba(255,105,180,.25);
+}
+.front img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  display:block;
+}
+.front .label{
+  position:absolute;
+  left:10px;
+  bottom:10px;
+  background: rgba(255,255,255,.85);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size:.85rem;
+  color:#6b2b42;
+}
+.back{
+  transform: rotateY(180deg);
+  padding: 14px;
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  text-align: center;
+}
+.back h3{
+  margin: 0;
+  color:#b0124b;
+}
+.back p{
+  margin: 0;
+  color:#6b2b42;
+  line-height: 1.35;
+}
+.small{
+  font-size:.85rem;
+  opacity: .85;
+}
