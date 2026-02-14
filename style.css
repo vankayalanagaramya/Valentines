@@ -1,3 +1,62 @@
+/* PHOTOS GRID FLEXBOX LAYOUT */
+.grid {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 32px 32px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    flex-wrap: wrap;
+    gap: 18px 0;
+  }
+}
+/* ---- Gift Box Surprise ---- */
+  .gift-box.surprise {
+    width: 120px;
+    height: 120px;
+    margin: 32px auto 0 auto;
+    position: relative;
+    cursor: pointer;
+    animation: jump 1.2s infinite cubic-bezier(.5,0,1,1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 2;
+  }
+}
+@media (max-width: 900px) {
+  .grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 18px 0;
+    max-width: 98vw;
+  }
+  .memories-wrap {
+    margin: 10px auto;
+    padding: 4px;
+    width: 100vw;
+  }
+  .valentine-img {
+    width: 98vw;
+    max-width: 98vw;
+  }
+  .flip-inner {
+    width: 190px;
+    height: 240px;
+    max-width: 98vw;
+  }
+  .gift-box.surprise {
+    margin: 62px auto 0 auto;
+  }
+}
+
 /* ---- Gift Box Surprise ---- */
 .gift-box.surprise {
   width: 120px;
@@ -123,10 +182,13 @@ body { margin: 0; font-family: system-ui, Arial, sans-serif; }
 /* ---- background ---- */
 .hearts-bg{
   min-height: 100vh;
-  display: grid;
-  place-items: center;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: radial-gradient(circle at top, #ffe3ef, #ffd1e3 40%, #ffb6c8);
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   position: relative;
 }
 
@@ -162,6 +224,7 @@ body { margin: 0; font-family: system-ui, Arial, sans-serif; }
   padding: 22px 22px 18px;
   box-shadow: 0 18px 60px rgba(0,0,0,.12);
   position: relative;
+  margin: 0 auto;
 }
 
 .mail-top{
@@ -230,9 +293,10 @@ h1{
 
 /* ---- Memories page ---- */
 .memories-wrap{
-  width: min(920px, 94vw);
+  width: min(920px, 98vw);
   margin: 40px auto;
   padding: 10px;
+  box-sizing: border-box;
 }
 
 .mem-title{
@@ -241,9 +305,18 @@ h1{
   margin: 0 0 18px;
 }
 
-.grid{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .memories-wrap {
+    margin: 10px auto;
+    padding: 4px;
+  }
+  .valentine-img {
+    width: 98vw;
+    max-width: 98vw;
+  }
+}
   gap: 16px;
 }
 
@@ -253,8 +326,9 @@ h1{
 }
 .flip-inner{
   position: relative;
-  width: 100%;
-  aspect-ratio: 3 / 4;
+  width: 190px;
+  height: 240px;
+  max-width: 90vw;
   border-radius: 18px;
   transform-style: preserve-3d;
   transition: transform .7s ease;
