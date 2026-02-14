@@ -7,6 +7,17 @@ yesBtn.addEventListener("click", () => {
 });
 
 // Make "No" button escape
+
+let noClickCount = 0;
+const noMessages = [
+  "No 🙈",
+  "Are you sure? 😳",
+  "Really? 😅",
+  "Please? 🥺",
+  "Last chance! 😘",
+  "You can't escape! 😂"
+];
+
 function moveNoButton() {
   // Make it position: fixed so it can move anywhere on screen
   noBtn.style.position = "fixed";
@@ -25,7 +36,13 @@ function moveNoButton() {
 
   // fun little rotation each time
   const rot = (Math.random() * 40) - 20;
-  noBtn.style.transform = `rotate(${rot}deg)`;
+  // Increase size and animate
+  noClickCount++;
+  const scale = 1 + 0.1 * (noClickCount % 4); // cycles through 1, 1.1, 1.2, 1.3
+  noBtn.style.transform = `rotate(${rot}deg) scale(${scale})`;
+
+  // Change button text
+  noBtn.textContent = noMessages[noClickCount % noMessages.length];
 }
 
 // Trigger when they try to hover or touch it
